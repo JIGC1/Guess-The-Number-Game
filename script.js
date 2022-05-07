@@ -4,7 +4,7 @@
  * Done Generate a random number 1 to 100 and save it to variable correctNumber
  * Done Console whether the guess is too high, too low, or is correct inside playGame function
  * Done Create a function called displayResult to move the logic for if the guess is too high, too low, or correct
- * TODO: Complete the showYouWon, showNumberAbove, showNumberBelow
+ * Done Complete the showYouWon, showNumberAbove, showNumberBelow
  * TODO: Use the showYouWon... functions within displayResult to display the correct dialog
  * TODO: Save the guess history in a variable called guess
  * TODO: Display the guess history using displayHistory() function
@@ -27,25 +27,23 @@ window.onload = function() {
  */
 function playGame(){
   // *CODE GOES BELOW HERE */
-displayResult();
+  let numberGuess = document.getElementById("number-guess").value;
+  displayResult(numberGuess);
 }
 /**
  * Show the result for if the guess it too high, too low, or correct
  * HINT: Use if, else if, else statement 
  */
 // *CODE GOES BELOW HERE *
-function displayResult (){
-    let numberGuess = document.getElementById("number-guess").value;
+function displayResult (numberGuess){
     if (numberGuess == correctNumber) {
-        console.log('correct');   
-      //return showYouWon;
+        showYouWon();
         } else if (numberGuess < correctNumber) {
-          console.log('too low');
-            //return showNumberBelow;
-        } else console.log('too high');   
-        // return showNumberAbove;
+          showNumberBelow();
+        } else if (numberGuess > correctNumber) {
+          showNumberAbove();
+        }
       }
-
 
 /**
  * Initialize a new game by resetting all values and content on the page
@@ -125,7 +123,7 @@ function showYouWon(){
    * HINT: Use the 'won' and text parameters 
    */
   // *CODE GOES BELOW HERE *
-
+  let dialog = getDialog('won', text);
   document.getElementById("result").innerHTML = dialog;
 }
 
@@ -137,7 +135,7 @@ function showNumberAbove(){
    * HINT: Use the 'warning' and text parameters 
    */
   // *CODE GOES BELOW HERE *
-
+  let dialog = getDialog('warning', text);
   document.getElementById("result").innerHTML = dialog;
 }
 
@@ -149,6 +147,6 @@ function showNumberBelow(){
    * HINT: Use the 'warning' and text parameters 
    */
   // *CODE GOES BELOW HERE *
-
+  let dialog = getDialog('warning', text);
   document.getElementById("result").innerHTML = dialog;
 }
