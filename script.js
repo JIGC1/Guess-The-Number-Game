@@ -28,9 +28,9 @@ window.onload = function() {
 function playGame(){
   // *CODE GOES BELOW HERE */
   let numberGuess = document.getElementById("number-guess").value;
-  displayResult(numberGuess);
   saveGuessHistory(numberGuess);
-  displayHistory(guesses);
+  displayHistory();
+  displayResult(numberGuess);
 }
 /**
  * Show the result for if the guess it too high, too low, or correct
@@ -80,8 +80,6 @@ function getRandomNumber(){
 function saveGuessHistory(guess) {
   // *CODE GOES BELOW HERE *
   guesses.push(guess);
-
-
 }
 
 /**
@@ -93,14 +91,13 @@ function saveGuessHistory(guess) {
  * HINT: use while loop and string concatentation to create a list of guesses
  */
 function displayHistory() {
-  let index; guesses.length - 1;// TODO
+  let index = guesses.length - 1; // TODO
   let list = "<ul class='list-group'>";
   // *CODE GOES BELOW HERE *
   while (index >= 0){
     list += "<li class='list-group-item'>" + "You Guessed " + guesses[index] + "</li>";
     index-=1;
   }
-
   list += '</ul>'
   document.getElementById("history").innerHTML = list;
 }
